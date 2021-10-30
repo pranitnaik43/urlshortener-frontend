@@ -9,7 +9,6 @@ toast.configure()
 const ChangePassword = ({history, location}) => {
 
   const dataTemplate = {
-    old_password: "",
     password: "",
     confirm_password: ""
   } 
@@ -106,16 +105,6 @@ const ChangePassword = ({history, location}) => {
             <Link to={"/signup"} className="btn btn-primary">Signup</Link>
           </div>
           <form>
-            {/* Old Password */}
-            <div className="form-group">
-              <label htmlFor="password">Old Password</label>
-              <input name="old_password" type="password" className="form-control" onChange={handleChange}/>
-              {
-                errors.old_password.split(";").map(error => {
-                  return <React.Fragment key={ Math.random() }><span className="text-danger">{ error }</span><br/></React.Fragment>
-                })
-              }
-            </div>
             {/* New Password */}
             <div className="form-group">
               <label htmlFor="password">New Password</label>

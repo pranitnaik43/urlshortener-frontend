@@ -1,11 +1,14 @@
 import  { useState, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
 import axios from 'axios';
 import {toast} from 'react-toastify'; 
 import 'react-toastify/dist/ReactToastify.css'; 
 toast.configure() 
 
-const Home = ({history}) => {
-  const [user, setUser] = useState(null)
+const Home = () => {
+  const [user, setUser] = useState(null);
+  const history = useHistory();
+
   useEffect(() => {
     let accessToken = localStorage.getItem("accessToken");
     if(!accessToken)
@@ -32,7 +35,7 @@ const Home = ({history}) => {
         history.push("/login");
         // console.log(error);
       });
-  }, []);
+  }, [history]);
 
   const handleLogout = () => {
     localStorage.setItem("accessToken", "");
