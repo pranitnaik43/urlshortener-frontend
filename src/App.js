@@ -17,7 +17,6 @@ function App() {
         <Switch>
           <Route path="/home" component={ ViewURLs }></Route>
           <Route path="/create" component={ CreateURL }></Route>
-          <Route path="/edit/:id" component={ EditURL }></Route>
           <Route path="/login" component={ Login }></Route>
           <Route path="/signup" component={ Register }></Route>
           <Route path="/resetPassword" component={ ResetPassword }></Route>

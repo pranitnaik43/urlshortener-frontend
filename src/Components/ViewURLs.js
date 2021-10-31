@@ -39,13 +39,9 @@ const ViewURLs = () => {
     history.push("/count/"+id);
   }
 
-  let goToEditPage = (id) => {
-    history.push("/edit/"+id);
-  }
-
   let handleDelete = (id) => {
     let config = {
-      url: process.env.REACT_APP_SERVER_URL+"/users/"+id,
+      url: process.env.REACT_APP_SERVER_URL+"/app/url/"+id,
       method: "DELETE",
       headers: {
         "content-type": "application/json"
@@ -87,8 +83,6 @@ const ViewURLs = () => {
                           <div className="col-sm-4 btn-group">
                             {/* view Click Count button */}
                             <button type="button" className="btn btn-light py-1" title="View Count" onClick={ () => goToCountPage(url._id) }><i className="fa fa-bar-chart text-info"></i></button>
-                            {/* edit Long URL button */}
-                            <button type="button" className="btn btn-light py-1" title="Edit Long URL" onClick={ () => goToEditPage(url._id) }><i className="fa fa-pencil"></i></button>
                             {/* delete URL button */}
                             <button type="button" className="btn btn-light py-1" title="Delete URL" onClick={ () => handleDelete(url._id) }><i className="fa fa-trash text-danger"></i></button>
                           </div>
