@@ -1,6 +1,12 @@
 import {NavLink, withRouter} from 'react-router-dom';
 
-const Nav = () => {
+const Nav = ({ history }) => {
+
+  const handleLogout = (e) => {
+    localStorage.setItem("accessToken", "");
+    history.push("/login");
+  }
+
   return ( 
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -12,6 +18,9 @@ const Nav = () => {
             <NavLink className="nav-link" to="/home">View</NavLink>
             <NavLink className="nav-link" to="/create">Create</NavLink>
             <NavLink className="nav-link" to="/about">About</NavLink>
+          </ul>
+          <ul className="navbar-nav ml-auto">
+            <li className="nav-link" onClick={ (e) => { handleLogout(e) }}>Logout</li>
           </ul>
         </div>
       </nav>
