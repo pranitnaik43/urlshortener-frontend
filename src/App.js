@@ -6,15 +6,14 @@ import ResetPassword from './Components/Auth/ResetPassword';
 import ChangePassword from './Components/Auth/ChangePassword';
 import ViewURLs from './Components/ViewURLs';
 import CreateURL from './Components/CreateURL';
-import Nav from './Components/Nav';
+
 import About from './Components/About';
 import ClickCount from './Components/ClickCount';
 
 function App() {
   return (
     <BrowserRouter>
-      <Nav />
-      <div className="container-fluid">
+      <div>
         <Switch>
           <Route path="/home" component={ ViewURLs }></Route>
           <Route path="/about" component={ About }></Route>

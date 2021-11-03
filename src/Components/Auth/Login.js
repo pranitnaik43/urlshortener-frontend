@@ -1,11 +1,12 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import queryString from 'query-string';
 import { Link } from "react-router-dom";
 import {toast} from 'react-toastify'; 
 import 'react-toastify/dist/ReactToastify.css'; 
 toast.configure() 
 
-const Login = ({history}) => {
+const Login = ({history, location}) => {
   const dataTemplate = {
     email: "",
     password: ""
@@ -13,6 +14,35 @@ const Login = ({history}) => {
 
   const [data, setData] = useState({...dataTemplate});
   const [errors, setErrors] = useState({...dataTemplate});
+
+  let params = queryString.parse(location.search);
+
+  useEffect(() => {
+    //activate account
+    if(params.token && params.id) {
+      var config = {
+        url: process.env.REACT_APP_SERVER_URL+"/auth/activate",
+        method: "POST",
+        headers: { 
+          "content-type": "application/json"
+        },
+        data: {
+          token: params.token,
+          userId: params.id
+        }
+      };
+      axios(config).then(response => {
+        if(response.data.error) {
+          // toast.error("Error in fetching data: "+ response.data.error.message, {autoClose: 5000});
+          console.log(response.data.error.message);
+        } else if(response.data.success) {
+          console.log(response.data.success.message);
+        }
+      }).catch((error) => {
+        console.log(error);
+      });
+    }
+  }, [params])
 
   const validatePassword = (password) => {
     let passErrors = [];

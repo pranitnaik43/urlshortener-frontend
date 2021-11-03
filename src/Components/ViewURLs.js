@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory } from "react-router";
+import withNav from "./HOC/withNav";
 import {toast} from 'react-toastify'; 
 import 'react-toastify/dist/ReactToastify.css'; 
 toast.configure() 
@@ -27,7 +28,8 @@ const ViewURLs = () => {
     };
     axios(config).then(response => {
       if(response.data.error) {
-        toast.error("Error in fetching data: "+ response.data.error.message, {autoClose: 5000});
+        // toast.error("Error in fetching data: "+ response.data.error.message, {autoClose: 5000});
+        console.log(response.data.error.message);
       } else {
         let data = response.data;
         data.forEach(element => {
@@ -104,4 +106,4 @@ const ViewURLs = () => {
   )
 }
 
-export default ViewURLs
+export default withNav(ViewURLs);

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import withNav from './HOC/withNav';
 import {toast} from 'react-toastify'; 
 import 'react-toastify/dist/ReactToastify.css'; 
 toast.configure();
@@ -68,4 +69,4 @@ const CreateURL = ({history}) => {
   );
 }
  
-export default CreateURL;
+export default withNav(CreateURL);
