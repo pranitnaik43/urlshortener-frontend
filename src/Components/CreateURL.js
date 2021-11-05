@@ -9,6 +9,11 @@ const CreateURL = ({history}) => {
   const [url, setURL] = useState("");
   const [error, setError] = useState("");
 
+  let accessToken = localStorage.getItem("accessToken");
+  if(!accessToken) {
+    history.push("/login");
+  }
+
   const handleChange = (e) => {
     let value = e.target.value;
     

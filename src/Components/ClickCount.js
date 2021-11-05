@@ -7,11 +7,14 @@ import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
 toast.configure() 
 
-const ClickCount = () => {
+const ClickCount = ({history}) => {
   const [urlData, setUrlData] = useState(null);
   const params = useParams();
   const urlId = params.urlId;
   let accessToken = localStorage.getItem("accessToken");
+  if(!accessToken) {
+    history.push("/login");
+  }
 
   //get current year
   var d = new Date();

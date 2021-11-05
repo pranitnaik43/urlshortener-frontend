@@ -1,4 +1,9 @@
-const About = () => {
+import withNav from "./HOC/withNav";
+const About = ({history}) => {
+  let accessToken = localStorage.getItem("accessToken");
+  if(!accessToken) {
+    history.push("/login");
+  }
   return ( 
     <div className="m-5">
       <h1 className="text-center text-primary">About</h1>
@@ -10,4 +15,4 @@ const About = () => {
   );
 }
  
-export default About;
+export default withNav(About);

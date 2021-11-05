@@ -19,7 +19,7 @@ const Login = ({history, location}) => {
 
   useEffect(() => {
     //activate account
-    if(params.token && params.id) {
+    if(params.token && params.email) {
       var config = {
         url: process.env.REACT_APP_SERVER_URL+"/auth/activate",
         method: "POST",
@@ -28,7 +28,7 @@ const Login = ({history, location}) => {
         },
         data: {
           token: params.token,
-          userId: params.id
+          email: params.email
         }
       };
       axios(config).then(response => {

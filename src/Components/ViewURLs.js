@@ -15,8 +15,9 @@ const ViewURLs = () => {
 
   useEffect(() => {
     //ComponentDidMount
-    if(!accessToken)
+    if(!accessToken) {
       history.push("/login");
+    }
 
     var config = {
       url: process.env.REACT_APP_SERVER_URL+"/app/urls",
